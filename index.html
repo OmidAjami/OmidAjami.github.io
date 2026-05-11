@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omid Ajami — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f; --bg2: #111118; --bg3: #16161f;
+    --border: rgba(255,255,255,0.07); --text: #e8e8f0; --muted: #888899;
+    --accent: #4f8ef7; --accent2: #7c6af7; --green: #3ecf8e;
+    --amber: #f5a623; --red: #e24b4a; --card-bg: rgba(255,255,255,0.03);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; border-bottom: 1px solid var(--border); background: rgba(10,10,15,0.85); backdrop-filter: blur(16px); }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(79,142,247,0.08) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(124,106,247,0.06) 0%, transparent 60%); }
+  .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
+  .hero-content { position: relative; z-index: 1; max-width: 820px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); border: 1px solid rgba(79,142,247,0.25); padding: 6px 14px; border-radius: 20px; margin-bottom: 2rem; background: rgba(79,142,247,0.06); animation: fadeUp 0.6s ease both; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--text); margin-bottom: 1rem; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-title-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--accent2); background: rgba(124,106,247,0.1); border: 1px solid rgba(124,106,247,0.2); padding: 4px 14px; border-radius: 6px; margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.8; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
+  .btn-primary:hover { background: #6ba3ff; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(79,142,247,0.3); }
+  .btn-outline { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); color: var(--text); padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.2); background: var(--card-bg); transform: translateY(-1px); }
+
+  .hero-industries { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 2.5rem; animation: fadeUp 0.6s 0.35s ease both; }
+  .industry-tag { font-size: 0.78rem; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; }
+
+  .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); animation: fadeUp 0.6s 0.4s ease both; }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--text); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; position: relative; z-index: 1; }
+  .section-tag { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; color: var(--text); margin-bottom: 1rem; line-height: 1.1; }
+  .section-sub { color: var(--muted); max-width: 520px; font-size: 1rem; line-height: 1.7; }
+
+  /* ABOUT */
+  #about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+  .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; font-size: 1rem; }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .about-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s; }
+  .about-card:hover { border-color: rgba(79,142,247,0.3); }
+  .about-card-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .about-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .about-card-sub { font-size: 0.82rem; color: var(--muted); }
+
+  /* PROJECTS */
+  #projects { background: var(--bg); }
+  .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+  .projects-count { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); }
+
+  .project-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; margin-bottom: 1.5rem; }
+  .project-card:hover { transform: translateY(-3px); border-color: rgba(79,142,247,0.3); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+
+  /* FEATURED — horizontal */
+  .project-card.featured { display: grid; grid-template-columns: 420px 1fr; }
+  .project-preview { background: linear-gradient(135deg, #0f1929 0%, #111827 100%); padding: 2.5rem; display: flex; align-items: center; justify-content: center; min-height: 280px; position: relative; overflow: hidden; }
+  .project-preview::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(79,142,247,0.12) 0%, transparent 70%); }
+  .preview-ui { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.25rem; width: 100%; max-width: 300px; position: relative; z-index: 1; }
+  .preview-bar { display: flex; gap: 5px; margin-bottom: 12px; }
+  .preview-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .preview-kpi { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding: 6px 8px; background: rgba(255,255,255,0.03); border-radius: 6px; }
+  .preview-kpi-val { font-family: 'DM Mono', monospace; font-size: 0.9rem; color: var(--accent); font-weight: 500; }
+  .preview-kpi-label { font-size: 0.72rem; color: var(--muted); }
+  .preview-barchart { display: flex; align-items: flex-end; gap: 4px; height: 44px; margin-top: 12px; }
+  .preview-barchart-bar { flex: 1; border-radius: 3px 3px 0 0; }
+
+  /* GRID PROJECTS — smaller cards */
+  .projects-grid-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .project-card.grid-card { margin-bottom: 0; }
+  .project-card.grid-card .project-preview { min-height: 140px; padding: 1.5rem; }
+
+  .project-body { padding: 2rem 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .project-status { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .project-status.soon { color: var(--amber); }
+  .project-status::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--text); margin-bottom: 0.75rem; line-height: 1.2; }
+  .grid-card .project-title { font-size: 1.1rem; }
+  .project-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.25rem; }
+  .project-industries { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .industry-pill { font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; background: rgba(62,207,142,0.08); border: 1px solid rgba(62,207,142,0.2); color: var(--green); font-family: 'DM Mono', monospace; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
+  .tech-tag { font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; background: rgba(79,142,247,0.08); border: 1px solid rgba(79,142,247,0.2); color: var(--accent); font-family: 'DM Mono', monospace; }
+  .project-links { display: flex; gap: 0.75rem; }
+  .link-btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 7px; font-size: 0.82rem; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+  .link-btn.primary { background: var(--accent); color: #fff; }
+  .link-btn.primary:hover { background: #6ba3ff; }
+  .link-btn.secondary { border: 1px solid var(--border); color: var(--muted); }
+  .link-btn.secondary:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .skill-group { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+  .skill-group-title { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; font-family: 'DM Mono', monospace; }
+  .skill-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .skill-name { font-size: 0.88rem; color: var(--text); }
+  .skill-level { font-size: 0.72rem; color: var(--muted); margin-left: auto; font-family: 'DM Mono', monospace; }
+
+  /* CONTACT */
+  #contact { background: var(--bg); text-align: center; }
+  .contact-inner { max-width: 580px; margin: 0 auto; }
+  .contact-inner .section-sub { margin: 0 auto 2.5rem; }
+  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer { padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.8rem; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero, section { padding: 7rem 1.5rem 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .project-card.featured { grid-template-columns: 1fr; }
+    .projects-grid-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Omid Ajami</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Open to new opportunities</div>
+    <h1>Data Analyst<br>who builds <em>AI tools</em><br>for operations teams.</h1>
+    <div class="hero-title-tag">Operations &amp; AI · Charlottetown, PEI</div>
+    <p class="hero-sub">I turn complex operational data into clear decisions — and I build AI-powered tools that make those insights accessible to everyone on the team, not just analysts.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">See my work →</a>
+      <a href="https://www.linkedin.com/in/omidajami/" target="_blank" class="btn-outline">LinkedIn ↗</a>
+    </div>
+    <div class="hero-industries">
+      <span class="industry-tag">Transportation</span>
+      <span class="industry-tag">Retail</span>
+      <span class="industry-tag">Supply Chain</span>
+      <span class="industry-tag">E-commerce</span>
+      <span class="industry-tag">Operations</span>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">SQL</div><div class="stat-label">Advanced</div></div>
+      <div><div class="stat-num">Python</div><div class="stat-label">Intermediate</div></div>
+      <div><div class="stat-num">GenAI</div><div class="stat-label">Applied</div></div>
+      <div><div class="stat-num">Power BI</div><div class="stat-label">Advanced</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">// about</div>
+  <h2 class="section-title">Analyst. Builder.<br>Operations thinker.</h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>I'm a <strong>Data Analyst</strong> based in Charlottetown, PEI, with a background that spans operations management and modern data tooling — SQL, Python, Power BI, and Tableau.</p>
+      <p>My edge is combining <strong>real operations experience</strong> with <strong>Generative AI integration</strong>. I don't just build dashboards — I build tools that let frontline managers, operations teams, and executives actually use the data without needing an analyst in the room.</p>
+      <p>I'm targeting data and analytics roles across <strong>retail, transportation, supply chain, and operations</strong> — anywhere that data-driven decisions can make a real difference on the ground.</p>
+    </div>
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="about-card-icon" style="background:rgba(79,142,247,0.1);">📊</div>
+        <div>
+          <div class="about-card-title">Data Analytics</div>
+          <div class="about-card-sub">SQL, Python, Power BI, Tableau — from raw data to operational decisions</div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon" style="background:rgba(124,106,247,0.1);">🤖</div>
+        <div>
+          <div class="about-card-title">Generative AI Integration</div>
+          <div class="about-card-sub">Claude API, natural language to SQL, AI-powered insights — making data accessible to everyone</div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon" style="background:rgba(62,207,142,0.1);">⚙️</div>
+        <div>
+          <div class="about-card-title">Operations Experience</div>
+          <div class="about-card-sub">Real-world understanding of how transportation, retail, and supply chain teams work</div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon" style="background:rgba(245,166,35,0.1);">🛠️</div>
+        <div>
+          <div class="about-card-title">Tool Development</div>
+          <div class="about-card-sub">End-to-end app deployment — data pipelines, Streamlit apps, dashboards, SOPs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <div>
+      <div class="section-tag">// projects</div>
+      <h2 class="section-title">Built, deployed,<br>live on the internet.</h2>
+      <p class="section-sub">Real working projects — not slide decks. Each one solves a real operational problem.</p>
+    </div>
+    <div class="projects-count reveal">1 live · 2 in development</div>
+  </div>
+
+  <!-- FEATURED -->
+  <div class="project-card featured reveal">
+    <div class="project-preview">
+      <div class="preview-ui">
+        <div class="preview-bar">
+          <div class="preview-dot" style="background:#e24b4a;"></div>
+          <div class="preview-dot" style="background:#f5a623;"></div>
+          <div class="preview-dot" style="background:#3ecf8e;"></div>
+        </div>
+        <div class="preview-kpi"><span class="preview-kpi-label">Overall OTD Rate</span><span class="preview-kpi-val">87.4%</span></div>
+        <div class="preview-kpi"><span class="preview-kpi-label">Total Freight Spend</span><span class="preview-kpi-val">$2.13M</span></div>
+        <div class="preview-kpi"><span class="preview-kpi-label">Avg Cost / km</span><span class="preview-kpi-val">$2.20</span></div>
+        <div class="preview-barchart">
+          <div class="preview-barchart-bar" style="height:70%;background:#4f8ef7;opacity:0.7;"></div>
+          <div class="preview-barchart-bar" style="height:85%;background:#4f8ef7;opacity:0.8;"></div>
+          <div class="preview-barchart-bar" style="height:60%;background:#4f8ef7;opacity:0.7;"></div>
+          <div class="preview-barchart-bar" style="height:95%;background:#4f8ef7;"></div>
+          <div class="preview-barchart-bar" style="height:75%;background:#4f8ef7;opacity:0.8;"></div>
+          <div class="preview-barchart-bar" style="height:55%;background:#e24b4a;opacity:0.9;"></div>
+          <div class="preview-barchart-bar" style="height:80%;background:#4f8ef7;opacity:0.7;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div class="project-status">Live · Featured project</div>
+      <div class="project-title">Transportation Intelligence Assistant</div>
+      <div class="project-industries">
+        <span class="industry-pill">Transportation</span>
+        <span class="industry-pill">Logistics</span>
+        <span class="industry-pill">Supply Chain</span>
+      </div>
+      <p class="project-desc">An AI-powered analytics app that lets anyone query carrier performance data in plain English — no SQL required. Features a live KPI dashboard with carrier scorecards, natural language to SQL, statistical anomaly detection with AI root-cause analysis, and an AI SOP generator.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Streamlit</span>
+        <span class="tech-tag">Claude API</span>
+        <span class="tech-tag">SQLite</span>
+        <span class="tech-tag">Plotly</span>
+        <span class="tech-tag">pandas</span>
+      </div>
+      <div class="project-links">
+        <a href="https://transport-ai-assistant-hggfxammhfv6bmw5gctn9z.streamlit.app/" target="_blank" class="link-btn primary">Live demo →</a>
+        <a href="https://github.com/OmidAjami/transport-ai-assistant" target="_blank" class="link-btn secondary">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID: COMING SOON -->
+  <div class="projects-grid-row reveal">
+
+    <div class="project-card grid-card">
+      <div class="project-preview">
+        <div style="text-align:center; position:relative; z-index:1;">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">🛒</div>
+          <div style="font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--amber);">In development</div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-status soon">In development</div>
+        <div class="project-title">Retail Analytics Dashboard</div>
+        <div class="project-industries">
+          <span class="industry-pill">Retail</span>
+          <span class="industry-pill">E-commerce</span>
+        </div>
+        <p class="project-desc">AI-powered retail performance dashboard tracking sales, inventory turnover, regional trends, and product category analysis — with natural language querying.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Streamlit</span>
+          <span class="tech-tag">Claude API</span>
+          <span class="tech-tag">Power BI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card grid-card">
+      <div class="project-preview">
+        <div style="text-align:center; position:relative; z-index:1;">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">👥</div>
+          <div style="font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--amber);">Planned</div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-status soon">Planned</div>
+        <div class="project-title">Workforce Operations Analytics</div>
+        <div class="project-industries">
+          <span class="industry-pill">Operations</span>
+          <span class="industry-pill">HR Analytics</span>
+        </div>
+        <p class="project-desc">Shift scheduling analysis, productivity metrics, and labour cost optimization — leveraging operations management experience with modern analytics tooling.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">SQL</span>
+          <span class="tech-tag">Tableau</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card grid-card">
+      <div class="project-preview">
+        <div style="text-align:center; position:relative; z-index:1;">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📦</div>
+          <div style="font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--amber);">Planned</div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-status soon">Planned</div>
+        <div class="project-title">Supply Chain KPI Library</div>
+        <div class="project-industries">
+          <span class="industry-pill">Supply Chain</span>
+          <span class="industry-pill">Open Source</span>
+        </div>
+        <p class="project-desc">An open-source library of SQL queries, Python scripts, and Power BI templates for common supply chain and transportation KPIs.</p>
+        <div class="project-tech">
+          <span class="tech-tag">SQL</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Power BI</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">// skills</div>
+  <h2 class="section-title">Tools I work with.</h2>
+  <p class="section-sub">A focused stack built around operations analytics and AI-powered tooling — applicable across retail, transportation, and supply chain.</p>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <div class="skill-group-title">Data & Analytics</div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--accent);"></div><span class="skill-name">SQL</span><span class="skill-level">Advanced</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--accent);"></div><span class="skill-name">Python</span><span class="skill-level">Intermediate</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--accent);"></div><span class="skill-name">pandas / numpy</span><span class="skill-level">Intermediate</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--accent);"></div><span class="skill-name">SQLite</span><span class="skill-level">Intermediate</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Visualization</div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--accent2);"></div><span class="skill-name">Power BI</span><span class="skill-level">Advanced</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--accent2);"></div><span class="skill-name">Tableau</span><span class="skill-level">Advanced</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--accent2);"></div><span class="skill-name">Plotly</span><span class="skill-level">Intermediate</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--accent2);"></div><span class="skill-name">Streamlit</span><span class="skill-level">Intermediate</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Generative AI</div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--green);"></div><span class="skill-name">Claude API</span><span class="skill-level">Applied</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--green);"></div><span class="skill-name">NL to SQL</span><span class="skill-level">Applied</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--green);"></div><span class="skill-name">AI Prompting</span><span class="skill-level">Applied</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--green);"></div><span class="skill-name">LLM Integration</span><span class="skill-level">Applied</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Domain & Tools</div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--amber);"></div><span class="skill-name">Operations Mgmt</span><span class="skill-level">Strong</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--amber);"></div><span class="skill-name">Transportation KPIs</span><span class="skill-level">Strong</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--amber);"></div><span class="skill-name">Salesforce</span><span class="skill-level">Learning</span></div>
+      <div class="skill-item"><div class="skill-dot" style="background:var(--amber);"></div><span class="skill-name">Git & GitHub</span><span class="skill-level">Intermediate</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <div class="section-tag">// contact</div>
+    <h2 class="section-title">Let's connect.</h2>
+    <p class="section-sub">I'm actively looking for data analyst roles in retail, transportation, supply chain, and operations. If you're building a data-driven team, I'd love to talk.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/omidajami/" target="_blank" class="btn-primary">LinkedIn →</a>
+      <a href="https://github.com/OmidAjami" target="_blank" class="btn-outline">GitHub ↗</a>
+      <a href="https://transport-ai-assistant-hggfxammhfv6bmw5gctn9z.streamlit.app/" target="_blank" class="btn-outline">Live App ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Omid Ajami</span>
+  <span>Built with HTML · Hosted on <a href="https://github.com/OmidAjami" target="_blank">GitHub Pages</a></span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

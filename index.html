@@ -16,37 +16,18 @@
   }
   html { scroll-behavior: smooth; }
   body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
 
-  /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; border-bottom: 1px solid var(--border); background: rgba(10,10,15,0.85); backdrop-filter: blur(16px); }
   .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
 
-  /* HERO */
   .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(79,142,247,0.08) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 20% 80%, rgba(124,106,247,0.06) 0%, transparent 60%); }
   .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
   .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; }
   .hero-content { position: relative; z-index: 1; }
-  .hero-visual { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.6s 0.5s ease both; }
-  .hv-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem 1.25rem; }
-  .hv-card-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-  .hv-kpi-row { display: flex; justify-content: space-between; align-items: center; }
-  .hv-kpi-val { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--text); }
-  .hv-kpi-delta { font-size: 0.75rem; padding: 3px 8px; border-radius: 20px; font-family: 'DM Mono', monospace; }
-  .hv-kpi-delta.up { background: rgba(62,207,142,0.1); color: var(--green); }
-  .hv-kpi-delta.down { background: rgba(226,75,74,0.1); color: var(--red); }
-  .hv-bars { display: flex; align-items: flex-end; gap: 6px; height: 52px; margin-top: 10px; }
-  .hv-bar { flex: 1; border-radius: 3px 3px 0 0; transition: height 1s ease; }
-  .hv-carriers { display: flex; flex-direction: column; gap: 8px; }
-  .hv-carrier-row { display: flex; align-items: center; gap: 10px; }
-  .hv-carrier-name { font-size: 0.78rem; color: var(--muted); width: 110px; flex-shrink: 0; }
-  .hv-carrier-bar-bg { flex: 1; height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
-  .hv-carrier-bar-fill { height: 100%; border-radius: 3px; }
-  .hv-carrier-val { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--text); width: 36px; text-align: right; }
   .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); border: 1px solid rgba(79,142,247,0.25); padding: 6px 14px; border-radius: 20px; margin-bottom: 2rem; background: rgba(79,142,247,0.06); animation: fadeUp 0.6s ease both; }
   .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
@@ -55,28 +36,26 @@
   .hero-title-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--accent2); background: rgba(124,106,247,0.1); border: 1px solid rgba(124,106,247,0.2); padding: 4px 14px; border-radius: 6px; margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.15s ease both; }
   .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.8; animation: fadeUp 0.6s 0.2s ease both; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-
   .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
   .btn-primary:hover { background: #6ba3ff; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(79,142,247,0.3); }
   .btn-outline { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border); color: var(--text); padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
   .btn-outline:hover { border-color: rgba(255,255,255,0.2); background: var(--card-bg); transform: translateY(-1px); }
-
   .hero-industries { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 2.5rem; animation: fadeUp 0.6s 0.35s ease both; }
   .industry-tag { font-size: 0.78rem; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; }
-
   .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); animation: fadeUp 0.6s 0.4s ease both; }
   .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--text); }
   .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
-
+  .hero-visual { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.6s 0.5s ease both; }
+  .hv-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem 1.25rem; }
+  .hv-card-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .hv-kpi-val { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--text); }
   @keyframes fadeUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
 
-  /* SECTIONS */
   section { padding: 6rem 4rem; position: relative; z-index: 1; }
   .section-tag { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
   .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; color: var(--text); margin-bottom: 1rem; line-height: 1.1; }
   .section-sub { color: var(--muted); max-width: 520px; font-size: 1rem; line-height: 1.7; }
 
-  /* ABOUT */
   #about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
   .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; font-size: 1rem; }
@@ -88,15 +67,11 @@
   .about-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
   .about-card-sub { font-size: 0.82rem; color: var(--muted); }
 
-  /* PROJECTS */
   #projects { background: var(--bg); }
   .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
   .projects-count { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); }
-
   .project-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; margin-bottom: 1.5rem; }
   .project-card:hover { transform: translateY(-3px); border-color: rgba(79,142,247,0.3); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
-
-  /* FEATURED — horizontal */
   .project-card.featured { display: grid; grid-template-columns: 420px 1fr; }
   .project-preview { background: linear-gradient(135deg, #0f1929 0%, #111827 100%); padding: 2.5rem; display: flex; align-items: center; justify-content: center; min-height: 280px; position: relative; overflow: hidden; }
   .project-preview::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(79,142,247,0.12) 0%, transparent 70%); }
@@ -108,12 +83,9 @@
   .preview-kpi-label { font-size: 0.72rem; color: var(--muted); }
   .preview-barchart { display: flex; align-items: flex-end; gap: 4px; height: 44px; margin-top: 12px; }
   .preview-barchart-bar { flex: 1; border-radius: 3px 3px 0 0; }
-
-  /* GRID PROJECTS — smaller cards */
   .projects-grid-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .project-card.grid-card { margin-bottom: 0; }
   .project-card.grid-card .project-preview { min-height: 140px; padding: 1.5rem; }
-
   .project-body { padding: 2rem 2.5rem; display: flex; flex-direction: column; justify-content: center; }
   .project-status { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
   .project-status.soon { color: var(--amber); }
@@ -132,7 +104,6 @@
   .link-btn.secondary { border: 1px solid var(--border); color: var(--muted); }
   .link-btn.secondary:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
 
-  /* SKILLS */
   #skills { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
   .skill-group { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
@@ -143,13 +114,11 @@
   .skill-name { font-size: 0.88rem; color: var(--text); }
   .skill-level { font-size: 0.72rem; color: var(--muted); margin-left: auto; font-family: 'DM Mono', monospace; }
 
-  /* CONTACT */
   #contact { background: var(--bg); text-align: center; }
   .contact-inner { max-width: 580px; margin: 0 auto; }
   .contact-inner .section-sub { margin: 0 auto 2.5rem; }
   .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-  /* FOOTER */
   footer { padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.8rem; }
   footer a { color: var(--muted); text-decoration: none; }
   footer a:hover { color: var(--text); }
@@ -212,29 +181,25 @@
       </div>
     </div>
 
-    <!-- HERO VISUAL — animated GenAI analytics -->
+    <!-- HERO VISUAL -->
     <div class="hero-visual">
-
-      <!-- KPI ROW -->
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
         <div class="hv-card">
           <div class="hv-card-label">OTD Rate</div>
-          <div class="hv-kpi-val" id="kpi1" style="font-size:1.6rem;">—</div>
+          <div class="hv-kpi-val" id="kpi1">—</div>
           <div style="font-size:0.7rem;color:var(--green);margin-top:3px;" id="kpi1d"></div>
         </div>
         <div class="hv-card">
           <div class="hv-card-label">Cost / km</div>
-          <div class="hv-kpi-val" id="kpi2" style="font-size:1.6rem;">—</div>
+          <div class="hv-kpi-val" id="kpi2">—</div>
           <div style="font-size:0.7rem;color:var(--muted);margin-top:3px;" id="kpi2d"></div>
         </div>
         <div class="hv-card">
           <div class="hv-card-label">Total Spend</div>
-          <div class="hv-kpi-val" id="kpi3" style="font-size:1.6rem;">—</div>
+          <div class="hv-kpi-val" id="kpi3">—</div>
           <div style="font-size:0.7rem;color:var(--muted);margin-top:3px;">2024</div>
         </div>
       </div>
-
-      <!-- CARRIER BARS + AI PANEL -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
         <div class="hv-card">
           <div class="hv-card-label" style="margin-bottom:10px;">Carrier OTD %</div>
@@ -249,8 +214,6 @@
           <div id="aiResponse" style="font-size:0.75rem;color:var(--text);line-height:1.5;min-height:52px;flex:1;"></div>
         </div>
       </div>
-
-      <!-- SPARKLINE -->
       <div class="hv-card">
         <div class="hv-card-label" style="margin-bottom:8px;">Monthly OTD trend — 2024</div>
         <div id="sparkline" style="display:flex;align-items:flex-end;gap:4px;height:36px;"></div>
@@ -260,7 +223,6 @@
           <span style="font-size:0.6rem;color:var(--muted);font-family:'DM Mono',monospace;">Dec</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -271,38 +233,26 @@
   <h2 class="section-title">Analyst. Builder.<br>Operations thinker.</h2>
   <div class="about-grid reveal">
     <div class="about-text">
-      <p>I'm a <strong>Data Analyst</strong> based in Canada, with a background that spans operations management and modern data tooling — SQL, Python, Power BI, and Tableau.</p>
+      <p>I'm a <strong>Data Analyst</strong> based in Canada, with 3+ years at Walmart combining retail operations experience with modern data tooling — SQL, Python, Power BI, and Tableau.</p>
       <p>My edge is combining <strong>real operations experience</strong> with <strong>Generative AI integration</strong>. I don't just build dashboards — I build tools that let frontline managers, operations teams, and executives actually use the data without needing an analyst in the room.</p>
       <p>I'm targeting data and analytics roles across <strong>retail, transportation, supply chain, and operations</strong> — anywhere that data-driven decisions can make a real difference on the ground.</p>
     </div>
     <div class="about-cards">
       <div class="about-card">
         <div class="about-card-icon" style="background:rgba(79,142,247,0.1);">📊</div>
-        <div>
-          <div class="about-card-title">Data Analytics</div>
-          <div class="about-card-sub">SQL, Python, Power BI, Tableau — from raw data to operational decisions</div>
-        </div>
+        <div><div class="about-card-title">Data Analytics</div><div class="about-card-sub">SQL, Python, Power BI, Tableau — from raw data to operational decisions</div></div>
       </div>
       <div class="about-card">
         <div class="about-card-icon" style="background:rgba(124,106,247,0.1);">🤖</div>
-        <div>
-          <div class="about-card-title">Generative AI Integration</div>
-          <div class="about-card-sub">Claude API, natural language to SQL, AI-powered insights — making data accessible to everyone</div>
-        </div>
+        <div><div class="about-card-title">Generative AI Integration</div><div class="about-card-sub">Claude API, natural language to SQL, AI-powered insights — making data accessible to everyone</div></div>
       </div>
       <div class="about-card">
         <div class="about-card-icon" style="background:rgba(62,207,142,0.1);">⚙️</div>
-        <div>
-          <div class="about-card-title">Operations Experience</div>
-          <div class="about-card-sub">Real-world understanding of how transportation, retail, and supply chain teams work</div>
-        </div>
+        <div><div class="about-card-title">Operations Experience</div><div class="about-card-sub">3+ years at Walmart — retail operations, e-commerce performance, NPS improvement</div></div>
       </div>
       <div class="about-card">
         <div class="about-card-icon" style="background:rgba(245,166,35,0.1);">🛠️</div>
-        <div>
-          <div class="about-card-title">Tool Development</div>
-          <div class="about-card-sub">End-to-end app deployment — data pipelines, Streamlit apps, dashboards, SOPs</div>
-        </div>
+        <div><div class="about-card-title">Tool Development</div><div class="about-card-sub">End-to-end app deployment — data pipelines, Streamlit apps, dashboards, SOPs</div></div>
       </div>
     </div>
   </div>
@@ -316,10 +266,10 @@
       <h2 class="section-title">Built, deployed,<br>live on the internet.</h2>
       <p class="section-sub">Real working projects — not slide decks. Each one solves a real operational problem.</p>
     </div>
-    <div class="projects-count reveal">1 live · 2 in development</div>
+    <div class="projects-count reveal">2 live · 1 in development</div>
   </div>
 
-  <!-- FEATURED -->
+  <!-- FEATURED PROJECT 1 -->
   <div class="project-card featured reveal">
     <div class="project-preview">
       <div class="preview-ui">
@@ -343,7 +293,7 @@
       </div>
     </div>
     <div class="project-body">
-      <div class="project-status">Live · Featured project</div>
+      <div class="project-status">Live · Transportation</div>
       <div class="project-title">Transportation Intelligence Assistant</div>
       <div class="project-industries">
         <span class="industry-pill">Transportation</span>
@@ -366,61 +316,69 @@
     </div>
   </div>
 
-  <!-- GRID: COMING SOON -->
+  <!-- GRID PROJECTS -->
   <div class="projects-grid-row reveal">
 
+    <!-- PROJECT 2 — LIVE -->
     <div class="project-card grid-card">
-      <div class="project-preview">
-        <div style="text-align:center; position:relative; z-index:1;">
-          <div style="font-size:2.5rem; margin-bottom:0.5rem;">🛒</div>
-          <div style="font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--amber);">In development</div>
+      <div class="project-preview" style="background:linear-gradient(135deg,#0a1f0f,#0f2818);">
+        <div style="text-align:center;position:relative;z-index:1;">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem;">🛒</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--green);">● Live</div>
         </div>
       </div>
       <div class="project-body">
-        <div class="project-status soon">In development</div>
-        <div class="project-title">Retail Analytics Dashboard</div>
+        <div class="project-status">Live · Retail</div>
+        <div class="project-title">Retail Inventory Intelligence</div>
         <div class="project-industries">
           <span class="industry-pill">Retail</span>
           <span class="industry-pill">E-commerce</span>
         </div>
-        <p class="project-desc">AI-powered retail performance dashboard tracking sales, inventory turnover, regional trends, and product category analysis — with natural language querying.</p>
+        <p class="project-desc">AI-powered inventory analytics tracking stock levels, out-of-stock risk, and reorder recommendations across 8 Canadian store locations and 58 products.</p>
         <div class="project-tech">
           <span class="tech-tag">Python</span>
           <span class="tech-tag">Streamlit</span>
           <span class="tech-tag">Claude API</span>
-          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">SQLite</span>
+        </div>
+        <div class="project-links">
+          <a href="https://retail-inventory-intelligence.streamlit.app/" target="_blank" class="link-btn primary">Live demo →</a>
+          <a href="https://github.com/OmidAjami/retail-inventory-intelligence" target="_blank" class="link-btn secondary">GitHub ↗</a>
         </div>
       </div>
     </div>
 
+    <!-- PROJECT 3 — COMING SOON -->
     <div class="project-card grid-card">
       <div class="project-preview">
-        <div style="text-align:center; position:relative; z-index:1;">
-          <div style="font-size:2.5rem; margin-bottom:0.5rem;">👥</div>
-          <div style="font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--amber);">Planned</div>
+        <div style="text-align:center;position:relative;z-index:1;">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem;">👥</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--amber);">In development</div>
         </div>
       </div>
       <div class="project-body">
-        <div class="project-status soon">Planned</div>
+        <div class="project-status soon">In development</div>
         <div class="project-title">Workforce Operations Analytics</div>
         <div class="project-industries">
           <span class="industry-pill">Operations</span>
           <span class="industry-pill">HR Analytics</span>
         </div>
-        <p class="project-desc">Shift scheduling analysis, productivity metrics, and labour cost optimization — leveraging operations management experience with modern analytics tooling.</p>
+        <p class="project-desc">Shift scheduling analysis, productivity metrics, and labour cost optimization — built on real operations management experience.</p>
         <div class="project-tech">
           <span class="tech-tag">Python</span>
           <span class="tech-tag">SQL</span>
           <span class="tech-tag">Tableau</span>
+          <span class="tech-tag">Claude API</span>
         </div>
       </div>
     </div>
 
+    <!-- PROJECT 4 — PLANNED -->
     <div class="project-card grid-card">
       <div class="project-preview">
-        <div style="text-align:center; position:relative; z-index:1;">
-          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📦</div>
-          <div style="font-family:'DM Mono',monospace; font-size:0.7rem; color:var(--amber);">Planned</div>
+        <div style="text-align:center;position:relative;z-index:1;">
+          <div style="font-size:2.5rem;margin-bottom:0.5rem;">📦</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--amber);">Planned</div>
         </div>
       </div>
       <div class="project-body">
@@ -446,7 +404,7 @@
 <section id="skills">
   <div class="section-tag">// skills</div>
   <h2 class="section-title">Tools I work with.</h2>
-  <p class="section-sub">A focused stack built around operations analytics and AI-powered tooling — applicable across retail, transportation, and supply chain.</p>
+  <p class="section-sub">A focused stack built around operations analytics and AI-powered tooling.</p>
   <div class="skills-grid reveal">
     <div class="skill-group">
       <div class="skill-group-title">Data & Analytics</div>
@@ -488,7 +446,8 @@
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/omidajami/" target="_blank" class="btn-primary">LinkedIn →</a>
       <a href="https://github.com/OmidAjami" target="_blank" class="btn-outline">GitHub ↗</a>
-      <a href="https://transport-ai-assistant-hggfxammhfv6bmw5gctn9z.streamlit.app/" target="_blank" class="btn-outline">Live App ↗</a>
+      <a href="https://transport-ai-assistant-hggfxammhfv6bmw5gctn9z.streamlit.app/" target="_blank" class="btn-outline">Project 1 ↗</a>
+      <a href="https://retail-inventory-intelligence.streamlit.app/" target="_blank" class="btn-outline">Project 2 ↗</a>
     </div>
   </div>
 </section>
@@ -515,10 +474,9 @@
   const queries = [
     { q: "Worst carrier last month?", r: "Coastal Transport at 79.8% OTD — 5.2 pts below target. Recommend performance review." },
     { q: "Most expensive route?", r: "Ottawa → Toronto leads at $2.71/km. Consider carrier reallocation on this lane." },
-    { q: "Any anomalies detected?", r: "Coastal Transport showed a sharp OTD dip in March (z = -2.3). Likely capacity issue." },
-    { q: "Top performer this year?", r: "Northern Logistics: 91.9% OTD, 0.1 hrs avg delay across 247 shipments. Best in network." },
+    { q: "Any anomalies detected?", r: "Coastal Transport: sharp OTD dip in March (z = -2.3). Likely capacity issue." },
+    { q: "Top performer this year?", r: "Northern Logistics: 91.9% OTD, 0.1 hrs avg delay across 247 shipments." },
   ];
-
   let qIdx = 0, typeTimer = null;
 
   function buildBars() {
@@ -527,8 +485,7 @@
     carriers.forEach(carrier => {
       const row = document.createElement('div');
       row.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:7px;';
-      row.innerHTML = `
-        <div style="font-size:0.65rem;color:var(--muted);width:80px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${carrier.name}</div>
+      row.innerHTML = `<div style="font-size:0.65rem;color:var(--muted);width:80px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${carrier.name}</div>
         <div style="flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;">
           <div class="bar-fill" data-w="${carrier.otd}" style="height:100%;border-radius:2px;background:${carrier.color};width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div>
         </div>
@@ -551,7 +508,7 @@
   }
 
   function animateKPIs() {
-    setTimeout(() => { document.getElementById('kpi1').textContent = '87.4%'; document.getElementById('kpi1d').textContent = '+2.4% vs 85% target'; }, 500);
+    setTimeout(() => { document.getElementById('kpi1').textContent = '87.4%'; document.getElementById('kpi1d').textContent = '+2.4% vs target'; }, 500);
     setTimeout(() => { document.getElementById('kpi2').textContent = '$2.20'; document.getElementById('kpi2d').textContent = 'CAD avg'; }, 800);
     setTimeout(() => { document.getElementById('kpi3').textContent = '$2.13M'; }, 1100);
   }
@@ -563,10 +520,7 @@
     typeTimer = setInterval(() => {
       if (i < text.length) {
         el.innerHTML = text.slice(0, ++i) + '<span style="display:inline-block;width:2px;height:11px;background:var(--accent);margin-left:1px;vertical-align:middle;animation:blink 0.8s infinite;"></span>';
-      } else {
-        clearInterval(typeTimer);
-        if (cb) setTimeout(cb, 3000);
-      }
+      } else { clearInterval(typeTimer); if (cb) setTimeout(cb, 3000); }
     }, 20);
   }
 
@@ -584,9 +538,7 @@
   style.textContent = '@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}';
   document.head.appendChild(style);
 
-  buildBars();
-  buildSparkline();
-  animateKPIs();
+  buildBars(); buildSparkline(); animateKPIs();
   setTimeout(cycleQueries, 1400);
 </script>
 </body>
